@@ -1,0 +1,34 @@
+library identifier: "pipeline-library@master", retriever: modernSCM(
+  [$class: "GitSCMSource",
+   remote: "https://github.com/redhat-cop/pipeline-library.git"])
+
+pipeline{
+    agent{
+        label "nodejs"
+    }
+    stages{
+        stage("Checkout code"){
+            steps{
+                git 'https://github.com/adynetro/openshift-demo-pipeline.git'
+            }
+        }
+        stage("Build code"){
+            steps{
+                sh '''
+                cd gremlins
+                npm install
+                npm build
+                '''
+            }
+        }
+        stage("Binary build"){
+            steps{
+                binaryBuild([
+                        buildConfigName: "gremlins-build",
+                        buildFromFlag  : "--from-dir",
+                        buildFromPath  : "${WORKSPACE}/gremlins/build/"
+                ])
+            }
+        }
+    }
+}
