@@ -1,0 +1,24 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: gremlins
+  namespace: devops
+  labels:
+    app: gremlins
+    app.kubernetes.io/component: gremlins
+    app.kubernetes.io/instance: gremlins
+    app.kubernetes.io/name: gremlins
+    app.kubernetes.io/part-of: gremlins-app
+spec:
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+    - name: 8443-tcp
+      protocol: TCP
+      port: 8443
+      targetPort: 8443
+  selector:
+    app: gremlins
+    deploymentconfig: gremlins
