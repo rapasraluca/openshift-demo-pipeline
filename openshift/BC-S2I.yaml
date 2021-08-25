@@ -1,0 +1,18 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: gremlins-build
+  namespace: devops
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'gremlins:latest'
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: 'nginx:latest'
+
