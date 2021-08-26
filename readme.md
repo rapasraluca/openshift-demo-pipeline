@@ -19,7 +19,7 @@ We'll cover here some basic principles as :
 
 4. The builds stucks at binary build, and if we'll check the logs we can see that there is no stream for this. Because the service account that builds the image is limited, the image stream is not created, so we'll need to create our imagesream from the definition using one of the methods : cli or web ui.
 
-5. Now if we run we'll se our build complete, and in the imagestream we'll find the latest label, as defined in the buildconfig for s2i. The next step is to deploy our application, and tis can be achieved by applying the deploymentconfig from cli or ui. You can see the logs for the pod, and when the readyness probe will be ok the app will be up and running.
+5. Now if we run we'll se our build complete, and in the imagestream we'll find the latest label, as defined in the buildconfig for s2i. The next step is to deploy our application, and this can be achieved by applying the deploymentconfig from cli or ui. You can see the logs for the pod, and when the readyness probe will be ok the app will be up and running.
 
 6. For you to access the app you need to create a route, but for you to create a route you need to create a service. The service makes your app discoverable to kubernetes, so you can access it from within kubernetes cluster, and the route connects to the service and exposes the application with an URL http(s)://[route].apps.[openshift.adress] .
 
