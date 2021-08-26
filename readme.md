@@ -47,7 +47,7 @@ oc apply -f openshift\BC-jenkins.yaml
 install a helm chart
 
 ```bash
-helm install gremlins-helm ./gremlins/ --set name=gremlins-helm
+helm install gremlins-helm ./gremlins/ --set nameOverride=gremlins-helm
 ```
 
 update a helm chart
