@@ -12,7 +12,7 @@ image:
   namespace: devops
 
 imagePullSecrets: []
-nameOverride: gremlins-helm
+nameOverride: gremlins
 strategy: Rolling
 replicas: 1
 
