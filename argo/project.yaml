@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: gremlins
+  namespace: argocd 
+spec:
+  description: Test Project for Gremlins
+  sourceRepos:
+    - https://github.com/adynetro/openshift-demo-pipeline.git
+  destinations:
+    - namespace: devops
+      server: https://kubernetes.default.svc
