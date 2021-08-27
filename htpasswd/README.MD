@@ -9,7 +9,7 @@ htpasswd -c -B -b users.htpasswd user password
 create the secret with password list
 
 ```bash
-oc create secret generic htpass-secret --from-file=htpasswd=</path/to/users.htpasswd> -n openshift-config
+oc create secret generic htpass-secret --from-file=htpasswd=users.htpasswd -n openshift-config
 ```
 
 create the manifest:
