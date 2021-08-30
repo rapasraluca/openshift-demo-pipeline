@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: gremlins
-  namespace: argocd
+  namespace: argocd   
 spec:
   project: gremlins
   source:
@@ -13,7 +13,7 @@ spec:
     server: https://kubernetes.default.svc
     namespace: devops
   ignoreDifferences:
-  - group: apps
+  - group: apps.openshift.io
     kind: DeploymentConfig
     jsonPointers:
     - /spec/template/spec/containers/0/image
