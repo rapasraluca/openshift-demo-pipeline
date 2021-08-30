@@ -7,7 +7,7 @@ spec:
   project: gremlins
   source:
     repoURL: https://github.com/adynetro/openshift-demo-pipeline.git
-    targetRevision: feature/helm
+    targetRevision: master
     path: helm/gremlins
   destination:
     server: https://kubernetes.default.svc
