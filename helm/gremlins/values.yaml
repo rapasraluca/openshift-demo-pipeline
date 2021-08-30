@@ -14,7 +14,7 @@ image:
 imagePullSecrets: []
 nameOverride: gremlins
 strategy: Rolling
-replicas: 2
+replicas: 1
 
 
 
