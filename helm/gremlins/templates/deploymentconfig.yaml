@@ -1,0 +1,46 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: {{ .Values.nameOverride }}
+  namespace: devops
+  labels:
+    app: {{ .Values.nameOverride }}
+    app.kubernetes.io/component: {{ .Values.nameOverride }}
+    app.kubernetes.io/instance: {{ .Values.nameOverride }}
+    app.kubernetes.io/name: {{ .Values.nameOverride }}
+    app.kubernetes.io/part-of: {{ .Values.nameOverride }}-app
+    app.openshift.io/runtime: {{ .Values.nameOverride }}
+    app.openshift.io/runtime-version: {{ .Values.image.tag }}
+spec:
+  strategy:
+    type: {{ .Values.strategy }}
+  triggers:
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - {{ .Values.nameOverride }}
+        from:
+          kind: ImageStreamTag
+          namespace: {{ .Values.image.namespace }}
+          name: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+    - type: ConfigChange
+  replicas: {{ .Values.replicas }}
+  selector:
+    app: {{ .Values.nameOverride }}
+    deploymentconfig: {{ .Values.nameOverride }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.nameOverride }}
+        deploymentconfig: {{ .Values.nameOverride }}
+    spec:
+      containers:
+        - name: {{ .Values.nameOverride }}
+          image: >-
+            image-registry.openshift-image-registry.svc:5000/{{ .Values.image.namespace }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 8443
+              protocol: TCP

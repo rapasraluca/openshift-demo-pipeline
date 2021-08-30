@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gremlins
+  namespace: argocd
+spec:
+  project: gremlins
+  source:
+    repoURL: https://github.com/adynetro/openshift-demo-pipeline.git
+    targetRevision: feature/helm
+    path: helm/gremlins
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: devops
+  ignoreDifferences:
+  - group: apps
+    kind: DeploymentConfig
+    jsonPointers:
+    - /spec/template/spec/containers/0/image
