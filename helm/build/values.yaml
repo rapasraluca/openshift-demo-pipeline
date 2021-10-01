@@ -11,7 +11,7 @@ s2i:
 jenkins:
   name: "gremlins-pipeline"
   uri: "https://github.com/adynetro/openshift-demo-pipeline"
-  ref: "master"
+  ref: "testRalu"
   jenkinsPath: jenkins/Jenkinsfile
 
 image:
