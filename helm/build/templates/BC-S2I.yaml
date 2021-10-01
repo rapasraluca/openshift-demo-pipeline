@@ -1,0 +1,19 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: {{ .Values.build.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: {{ .Values.s2i.output.name }}
+      namespace: {{ .Values.namespace }}
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: {{ .Values.s2i.source.name }}
+        namespace: {{ .Values.s2i.source.namespace }}
+

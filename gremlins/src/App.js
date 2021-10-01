@@ -8,6 +8,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Gremlins need to learn <code>React</code> fast !.
+          Image changed!
         </p>
         <a
           className="App-link"

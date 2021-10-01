@@ -1,0 +1,13 @@
+kind: "BuildConfig"
+apiVersion: "build.openshift.io/v1"
+metadata:
+  name: {{ .Values.jenkins.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  source:
+    git:
+      uri: {{ .Values.jenkins.uri }}
+      ref: {{ .Values.jenkins.ref }}
+  strategy:
+    jenkinsPipelineStrategy:
+      jenkinsfilePath: {{ .Values.jenkins.jenkinsPath }}

@@ -1,0 +1,20 @@
+build: 
+  name: gremlins-build
+
+s2i:
+  output:
+    name: 'gremlins:latest'
+  source:
+    name: 'nginx:latest'
+    namespace: openshift
+
+jenkins:
+  name: "gremlins-pipeline"
+  uri: "https://github.com/adynetro/openshift-demo-pipeline"
+  ref: "master"
+  jenkinsPath: jenkins/Jenkinsfile
+
+image:
+  name: gremlins
+
+namespace: devops
