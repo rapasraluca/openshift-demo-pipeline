@@ -3,9 +3,9 @@ build:
 
 s2i:
   output:
-    name: 'gremlins:latest'
+    name: gremlins:latest
   source:
-    name: 'nginx:latest'
+    name: nginx:latest
     namespace: openshift
 
 jenkins:
