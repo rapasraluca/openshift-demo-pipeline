@@ -10,7 +10,7 @@ pipeline{
         stage("Checkout code"){
             steps{
                 git branch: "testRalu",
-                    url: 'https://github.com/adynetro/openshift-demo-pipeline.git'
+                    url: 'https://github.com/rapasraluca/openshift-demo-pipeline.git'
             }
         }
         stage("Build code"){
