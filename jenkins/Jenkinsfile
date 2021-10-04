@@ -17,6 +17,7 @@ pipeline{
             steps{
                 sh '''
                 cd gremlins
+                cat ./src/App.js
                 npm install
                 npm run-script build
                 '''
